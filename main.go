@@ -11,6 +11,8 @@ func main() {
 	var remainingTickets uint = 50
 	var bookings []string
 
+	greetUsers(conferenceName)
+
 	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
 
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
@@ -61,7 +63,19 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Println("Your input data is invalid, Try again.")
+			if !isValidName {
+				fmt.Println("First or last name you entered is too short.")
+			}
+			if !isValidEmail {
+				fmt.Println("Email you entered doesn't contain @gmail.com.")
+			}
+			if !isValidTicketNumber {
+				fmt.Println("Ticket number you entered is invalid.")
+			}
 		}
 	}
+}
+
+func greetUsers(confName string) {
+	fmt.Printf("Welcome to %v booking application", confName)
 }
